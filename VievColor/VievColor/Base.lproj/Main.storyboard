@@ -30,6 +30,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Min">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="minPressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1EE-Fy-UhS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3K-JU-EXM">
                                 <rect key="frame" x="156" y="48" width="102" height="41"/>
@@ -38,6 +41,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Medium">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="mediumPressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Tc-MM-cY4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgs-C4-CRJ">
                                 <rect key="frame" x="292" y="48" width="102" height="41"/>
@@ -46,6 +52,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Max">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="maxPressedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bh0-BQ-Sim"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjJ-sn-o95">
                                 <rect key="frame" x="104" y="143" width="46" height="23"/>
@@ -99,18 +108,16 @@
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jl8-y7-hGY">
                                 <rect key="frame" x="156" y="139" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7YK-Ni-wM5">
-                                <rect key="frame" x="156" y="210" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="z6w-KD-RWv">
-                                <rect key="frame" x="156" y="279" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="redSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="zMe-7g-5LB"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="z9D-L8-G9A">
                                 <rect key="frame" x="156" y="350" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="alphaSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="Q9c-ri-u4F"/>
+                                </connections>
                             </slider>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-3C-Wft">
                                 <rect key="frame" x="32" y="493" width="350" height="350"/>
@@ -131,10 +138,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7YK-Ni-wM5">
+                                <rect key="frame" x="156" y="213" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="greenSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="CNU-JJ-Kl0"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="z6w-KD-RWv">
+                                <rect key="frame" x="156" y="282" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="blueSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="LMj-iD-TFV"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="alphaValueSlider" destination="z9D-L8-G9A" id="7oF-ig-sht"/>
+                        <outlet property="alphaValueText" destination="cSt-5M-aai" id="oKp-6G-H0u"/>
+                        <outlet property="blueValueSlider" destination="z6w-KD-RWv" id="tia-3P-Xfz"/>
+                        <outlet property="blueValueText" destination="DJa-h1-D74" id="dP9-kl-En7"/>
+                        <outlet property="greenValueSlider" destination="7YK-Ni-wM5" id="hAD-xc-YrB"/>
+                        <outlet property="greenValueText" destination="bVu-ZV-LVd" id="CyQ-qN-xKW"/>
+                        <outlet property="redValueSlider" destination="jl8-y7-hGY" id="qna-6i-lEd"/>
+                        <outlet property="redValueText" destination="tjJ-sn-o95" id="x9g-Li-EKq"/>
+                        <outlet property="vievColor" destination="yOF-cW-qk4" id="h2I-yj-6WY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
