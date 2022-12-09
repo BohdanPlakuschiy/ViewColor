@@ -20,19 +20,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var blueValueSlider: UISlider!
     @IBOutlet weak var alphaValueSlider: UISlider!
     
+    let maxColorValue: Float = 255.0
+    let minColorValue: Float = 0.0
+    var medColorValue: Float {
+        return (maxColorValue - minColorValue) / 2.0 + minColorValue
+    }
+    var arraySlider: [UISlider] {
+        return [redValueSlider, greenValueSlider, blueValueSlider, alphaValueSlider]
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redValueSlider.maximumValue = 255
-        greenValueSlider.maximumValue = 255
-        blueValueSlider.maximumValue = 255
-        alphaValueSlider.maximumValue = 255
-        redValueSlider.minimumValue = 0
-        greenValueSlider.minimumValue = 0
-        blueValueSlider.minimumValue = 0
-        alphaValueSlider.minimumValue = 0
-        startValueSlider()
-        textValueSliders()
+        initUpdateForSlider()
+        toneControl()
     }
 
     @IBAction func redSlider(_ sender: Any) {
@@ -57,41 +58,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func minPressedButton(_ sender: Any) {
-        redValueSlider.value = redValueSlider.minimumValue
-        greenValueSlider.value = greenValueSlider.minimumValue
-        blueValueSlider.value = blueValueSlider.minimumValue
-        alphaValueSlider.value = alphaValueSlider.minimumValue
+        updateSliderValue(minColorValue)
         textValueSliders()
         toneControl()
     }
     
     @IBAction func mediumPressedButton(_ sender: Any) {
-        startValueSlider()
+        updateSliderValue(medColorValue)
         textValueSliders()
         toneControl()
     }
     
     @IBAction func maxPressedButton(_ sender: Any) {
-        redValueSlider.value = redValueSlider.maximumValue
-        greenValueSlider.value = greenValueSlider.maximumValue
-        blueValueSlider.value = blueValueSlider.maximumValue
-        alphaValueSlider.value = alphaValueSlider.maximumValue
+        updateSliderValue(maxColorValue)
         textValueSliders()
         toneControl()
     }
     
     func toneControl() {
-        vievColor.backgroundColor = UIColor(red: CGFloat(redValueSlider.value / redValueSlider.maximumValue),
-                                            green: CGFloat(greenValueSlider.value / greenValueSlider.maximumValue),
-                                            blue: CGFloat(blueValueSlider.value / blueValueSlider.maximumValue),
-                                            alpha: CGFloat(alphaValueSlider.value / alphaValueSlider.maximumValue))
-    }
-    
-    func startValueSlider() {
-                redValueSlider.value = (redValueSlider.maximumValue - redValueSlider.minimumValue) / 2 + redValueSlider.minimumValue
-                greenValueSlider.value = (greenValueSlider.maximumValue - greenValueSlider.minimumValue) / 2 +  greenValueSlider.minimumValue
-                blueValueSlider.value = (blueValueSlider.maximumValue - blueValueSlider.minimumValue) / 2 + redValueSlider.minimumValue
-                alphaValueSlider.value = (alphaValueSlider.maximumValue - alphaValueSlider.minimumValue) / 2 + alphaValueSlider.minimumValue
+        let redValue = CGFloat(redValueSlider.value / redValueSlider.maximumValue)
+        let greenValue = CGFloat(greenValueSlider.value / greenValueSlider.maximumValue)
+        let blueValue = CGFloat(blueValueSlider.value / blueValueSlider.maximumValue)
+        let alphaValue = CGFloat(alphaValueSlider.value / alphaValueSlider.maximumValue)
+        vievColor.backgroundColor = UIColor(red: redValue,
+                                            green: greenValue,
+                                            blue: blueValue,
+                                            alpha: alphaValue)
     }
     
     func textValueSliders() {
@@ -100,5 +92,27 @@ class ViewController: UIViewController {
         blueValueText.text = "\(Int(blueValueSlider.value))"
         alphaValueText.text = "\(Int(alphaValueSlider.value))"
     }
+    
+    func updateSliderValue(_ value: Float) {
+        for item in arraySlider {
+            item.value = value
+        }
+        
+    }
+    
+    func setupBoudaryValue(for slider: UISlider) {
+        slider.minimumValue = minColorValue
+        slider.maximumValue = maxColorValue
+    }
+    
+    func initUpdateForSlider() {
+        for slider in arraySlider {
+            setupBoudaryValue(for: slider)
+        }
+        
+        updateSliderValue(medColorValue)
+        textValueSliders()
+    }
+    
 }
 
